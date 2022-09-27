@@ -1,0 +1,278 @@
+// Some helpers
+$body-font-color: #757575; // body font color
+$primary-color: #9b70c8; // header font color and check icon color
+$primary-light-color: #fabdc1; // second gradient color for body bg
+$accent-color: #ffba74; // button bg colort
+$accent-dark-color: #ff9f4a;
+$gray-bg-color: #fafafa; // input container bg color
+$border-color: #e9e9e9; // checkbox, input container and input borders color
+$completed-color: #cfcfcf; // completed label color
+$delete-color: red; // delete icon color
+$delete-hover-color: #f32804; // delete icon hover color
+
+@import "./modules/reset";
+@import "./modules/typography";
+
+// Write your SCSS or CSS below or set up custom modules in "modules" folder if you want
+.app-body {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: linear-gradient(
+    119.18deg,
+    $primary-light-color 1.6%,
+    $primary-color 84.18%
+  );
+  color: $body-font-color;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 0px;
+  gap: 16px;
+
+  position: absolute;
+  width: 320px;
+  height: 368px;
+  left: calc(50% - 320px / 2 + 20px);
+  top: calc(50% - 368px / 2);
+
+  background: #ffffff;
+  box-shadow: 0px 8px 24px -4px rgba(128, 72, 189, 0.25);
+  border-radius: 16px;
+}
+
+.center-container {
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px 24px;
+
+  width: 320px;
+  height: 40px;
+
+  &:first-child {
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .title {
+    width: 200px;
+    height: 40px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+
+    color: $primary-color;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px 24px;
+
+  width: 320px;
+  height: 68px;
+
+  background: $gray-bg-color;
+  border: 1px solid $border-color;
+
+  input {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+
+    width: 236px;
+    height: 36px;
+
+    background: #ffffff;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: $border-color;
+    border-radius: 8px 0px 0px 8px;
+
+    /*style for input text */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: $body-font-color;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $completed-color;
+    }
+  }
+
+  .add-button {
+    //position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+
+    width: 36px;
+    height: 36px;
+
+    background: $accent-color;
+    border-radius: 0px 8px 8px 0px;
+    border-color: $border-color;
+
+    cursor: pointer;
+    .plus-icon {
+      //position: absolute;
+      left: 50%;
+      right: 50%;
+      top: 25%;
+      bottom: 25%;
+
+      color: #ffffff;
+    }
+
+    &:hover {
+      background: $accent-dark-color;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 24px;
+  gap: 20px;
+
+  width: 320px;
+  height: 180px;
+
+  overflow-y: auto;
+
+  &:first-child {
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+
+  .task-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .task {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0px;
+      gap: 8px;
+      height: 20px;
+
+      .checkbox {
+        box-sizing: border-box;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        border: 2px solid $border-color;
+        border-radius: 8px;
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+
+        &:checked {
+          &:after {
+            content: "\2713";
+            position: absolute;
+            top: -3px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            color: $primary-color;
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .task-name {
+        width: 100%;
+        height: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      .task-done {
+        width: 100%;
+        height: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: $completed-color;
+        text-decoration: line-through;
+      }
+    }
+
+    .delete-icon {
+      width: 17px;
+      height: 17px;
+      color: $delete-color;
+      cursor: pointer;
+
+      &:hover {
+        color: $delete-hover-color;
+        transform: translate(0px, -2px);
+      }
+    }
+  }
+}
+
+.no-tasks {
+  width: 100%;
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: $completed-color;
+}
+
+.error-tasks {
+  width: 100%;
+  height: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: $delete-color;
+}
